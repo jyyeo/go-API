@@ -1,0 +1,11 @@
+FROM golang:1.7.3 AS build0
+
+LABEL maintainer="jyyeo@caltech.edu"
+
+RUN mkdir /app
+WORKDIR /app
+ADD . /app/
+RUN go get github.com/gorilla/mux
+RUN go build -o API .
+
+CMD ["./API"]
